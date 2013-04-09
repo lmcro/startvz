@@ -1,0 +1,1 @@
+This is just sample <b>dummy</b> data. Please change me in <code>template/content_home.tpl</code>
