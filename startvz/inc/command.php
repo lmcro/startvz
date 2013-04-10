@@ -12,7 +12,17 @@
 					$api_key = $row['api_key'];
 					$ip = 'http://'.$row['ip'].'/api.php?key='.$api_key.'&container='.$container.'&action='.$action.'&new_value='.$value;
 				}
-				file_get_contents($ip);
+				$contents = file_get_contents($ip);
+				if(stristr('error',$contents)) {
+					$has_error = true;
+				} else {
+					$has_error = false;	
+				}
+				
+				if($has_error==true) {
+					echo 'An error occured when sending command to node. Please contact the system administrator to get this issue resolved.';
+					exit;	
+				}
 			}
 		}
 	}
