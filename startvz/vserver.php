@@ -146,9 +146,11 @@ require_once('template/header.tpl');
 														echo 'Hostname could not be updated. Reason: the old hostname is the same as the new one.';	
 													} else {
 														// Update in DB
-															//$db->query('');
+															$db->query("UPDATE `virtual_servers` SET `hostname`='".$new_hostname."' WHERE `id`='".$view."'");
 														// Send command to server	
 															$command->sendCommandToServer($node, $container, 'hostname', $new_hostname);
+														
+														echo 'Updated hostname.';
 													}
 												} else { 
 													?>

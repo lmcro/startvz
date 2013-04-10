@@ -30,6 +30,10 @@ if($_SESSION['logged_in']) {
 							$_SESSION['logged_in']='yes';
 							$_SESSION['loggedin']='yes';
 							$_SESSION['username']=$user;
+							if($row['rank']>=3) { 
+								// user is admin
+								$_SESSION['admin']='yes';
+							}
 							echo '<b>Logged in successfully. <a href="index.php">Home</a></b>';	
 						} else {
 							echo 'The <b>password</b> you supplied is incorrect. Please, <a href="login.php">try again</a>.';	
