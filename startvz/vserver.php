@@ -161,7 +161,18 @@ require_once('template/header.tpl');
 													<?php
 												}
 											} elseif($sub=='power') {
-												
+												if($option=='boot') {
+													$command->sendCommandToServer($node, $container, 'power', 'boot');
+													echo 'Boot in progress.';
+												} elseif($option=='reboot') {
+													$command->sendCommandToServer($node, $container, 'power', 'reboot');
+													echo 'Reboot in progress.';
+												} elseif($option=='shutdown') {
+													$command->sendCommandToServer($node, $container, 'power', 'shutdown');
+													echo 'Shutting down.';
+												} else {
+													echo 'Unknown option.';	
+												}
 											} 
 									}
 								?>
